@@ -105,3 +105,14 @@ decimalButton.addEventListener('click', function() {
         updateDisplay(n2);
     }
 });
+
+const backspaceButton = document.querySelector('.button.backspace');
+backspaceButton.addEventListener('click', function() {
+    if (operator === '') {
+        n1 = n1.length > 1 ? n1.slice(0, -1) : '0';
+        updateDisplay(n1);
+    } else {
+        n2 = n2.length > 1 ? n2.slice(0, -1) : '0';
+        updateDisplay(n2);
+    }
+});
