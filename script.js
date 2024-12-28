@@ -4,28 +4,28 @@ let operator = '';
 let displayNumber = n1;
 const display = document.querySelector('.display');
 
-function add (n1, n2) {
-    return n1 + n2;
+function add(a, b) {
+    return a + b;
 }
 
-function subtract (n1, n2) {
-    return n1 - n2;
+function subtract(a, b) {
+    return a - b;
 }
 
-function multiply (n1, n2) {
-    return n1 * n2;
+function multiply(a, b) {
+    return a * b;
 }
 
-function divide (n1, n2) {
-    if (n2 === 0) {
-        return 'Infinite';
+function divide(a, b) {
+    if (b === 0) {
+        return 'Error: Division by 0';
     }
-    return n1 / n2;
+    return a / b;
 }
 
 function operate() {
-    number1 = parseInt(n1);
-    number2 = parseInt(n2);
+    const number1 = parseFloat(n1);
+    const number2 = parseFloat(n2);
 
     if (operator === '+') {
         return add(number1, number2);
@@ -42,29 +42,25 @@ function operate() {
     }
 }
 
-function updateDisplay(){
-    if (operator === '' || n2 === '0') {
-        displayNumber = n1;
-    } else {
-        displayNumber = n2;
-    }
-    display.textContent = displayNumber;
+function updateDisplay(number){
+    display.textContent = number;
 }
 
 function addNumber(number) {
     if (operator === '') {
         n1 = n1 === '0' ? number : n1 + number;
+        updateDisplay(n1);
     } else {
         n2 = n2 === '0' ? number : n2 + number;
+        updateDisplay(n2);
     }
-    updateDisplay();
 }
 
 function clearAll() {
     n1 = "0";
     n2 = "0";
     operator = '';
-    updateDisplay();
+    updateDisplay(n1);
 }
 
 const operatorButtons = document.querySelectorAll('.button.operator');
@@ -74,7 +70,7 @@ for (let i = 0; i < operatorButtons.length; i++) {
         if(n1 != '0' && n2 != '0') {
             n1 = operate();
             n2 = "0";
-            updateDisplay();
+            updateDisplay(n1);
         }
         operator = operatorButtons[i].innerText;
     });
@@ -96,5 +92,16 @@ equalButton.addEventListener('click', function() {
     n1 = operate();
     n2 = "0";
     operator = '';
-    updateDisplay();
+    updateDisplay(n1);
+});
+
+const decimalButton = document.querySelector('.button.decimal');
+decimalButton.addEventListener('click', function() {
+    if (operator === '' && !n1.includes('.')) {
+        n1 += '.';
+        updateDisplay(n1);
+    } else if (operator !== '' && !n2.includes('.')) {
+        n2 += '.';
+        updateDisplay(n2);
+    }
 });
