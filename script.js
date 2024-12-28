@@ -38,7 +38,7 @@ function operate() {
     } else if (operator === '%') {
         return number1 % number2;
     } else {
-        return 0;
+        return n1;
     }
 }
 
