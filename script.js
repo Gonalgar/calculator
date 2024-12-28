@@ -116,3 +116,24 @@ backspaceButton.addEventListener('click', function() {
         updateDisplay(n2);
     }
 });
+
+document.addEventListener('keydown', function(event) {
+    const key = event.key;
+    if (!isNaN(key)) {
+        addNumber(key);
+    } else if (key === '+' || key === '-' || key === '*' || key === '/') {
+        operatorButtons.forEach(button => {
+            if (button.innerText === key) {
+                button.click();
+            }
+        });
+    } else if (key === 'Enter' || key === '=') {
+        equalButton.click();
+    } else if (key === 'Backspace') {
+        backspaceButton.click();
+    } else if (key === 'Escape') {
+        acButton.click();
+    } else if (key === '.') {
+        decimalButton.click();
+    }
+});
