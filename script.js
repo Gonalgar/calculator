@@ -63,6 +63,16 @@ function clearAll() {
     updateDisplay(n1);
 }
 
+function changeSign() {
+    if (operator === '') {
+        n1 = (parseFloat(n1) * -1).toString();
+        updateDisplay(n1);
+    } else {
+        n2 = (parseFloat(n2) * -1).toString();
+        updateDisplay(n2);
+    }
+}
+
 const operatorButtons = document.querySelectorAll('.button.operator');
 
 for (let i = 0; i < operatorButtons.length; i++) {
@@ -137,3 +147,6 @@ document.addEventListener('keydown', function(event) {
         decimalButton.click();
     }
 });
+
+const signButton = document.querySelector('.button.sign');
+signButton.addEventListener('click', changeSign);
