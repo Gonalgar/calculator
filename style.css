@@ -17,6 +17,7 @@ body {
   }
 
   .display {
+    display: block;
     font-size: 32px;
     text-align: right;
     width: 280px;
@@ -56,7 +57,7 @@ body {
   .button.ac {
     background-color: #a3e635;
     color: white;
-    flex: 1 1 calc(50% - 10px);
+    flex: 0 0 calc(2 * 63px + 10px);
   }
 
   .button.ac:hover {
@@ -80,8 +81,4 @@ body {
 
   .button.equal:hover {
     background-color: #4e8ddf;
-  }
-
-  .button.wide {
-    flex: 1 1 calc(50% - 10px);
   }
